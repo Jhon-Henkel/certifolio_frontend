@@ -8,7 +8,6 @@ export const useAuthStore = defineStore('auth', {
     state: () => ({
         token: null as string|null,
         name: null as string|null,
-        username: null as string|null,
         email: null as string|null,
         userId: null as number|null,
         expiresIn: null as number|null,
@@ -18,7 +17,6 @@ export const useAuthStore = defineStore('auth', {
         login(data: AuthUserdataInterface) {
             this.token = data.token
             this.name = data.name
-            this.username = data.username
             this.email = data.email
             this.userId = data.id
             this.expiresIn = Math.floor(Date.now() / 1000) + expirationSessionTimeInSeconds
@@ -26,7 +24,6 @@ export const useAuthStore = defineStore('auth', {
         logout() {
             this.token = null
             this.name = null
-            this.username = null
             this.email = null
             this.userId = null
             this.expiresIn = null

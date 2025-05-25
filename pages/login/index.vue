@@ -13,14 +13,18 @@ const loading = ref(false)
 
 async function onSubmit(event: FormSubmitEvent<LoginSchemaType>) {
     loading.value = true
-    await service.login(event.data)
-    loading.value = false
+    try {
+        await service.login(event.data)
+        loading.value = false
+    } catch {
+        loading.value = false
+    }
 }
 </script>
 
 <template>
     <div>
-        <div class="min-h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat" :style="{ backgroundImage: `url('/assets/images/login_cover.png')` }">
+        <div class="min-h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat" :style="{ backgroundImage: `url('/assets/images/login_cover.jpg')` }">
             <div class="w-full max-w-sm p-6 rounded-xl shadow-md bg-white dark:bg-gray-900 text-gray-900 dark:text-white pt-0">
                 <div class="scale-30">
                     <NuxtImg src="/assets/images/logo.svg" alt="Logo" class="logo w-full"/>
@@ -28,8 +32,8 @@ async function onSubmit(event: FormSubmitEvent<LoginSchemaType>) {
                 <UForm :schema="LoginSchema" :state="state" class="space-y-4" @submit="onSubmit">
                     <USeparator />
 
-                    <UFormField name="user">
-                        <UInput v-model="state.user" placeholder="Usuário" icon="i-heroicons-user-16-solid" class="w-full"/>
+                    <UFormField name="email">
+                        <UInput v-model="state.email" placeholder="E-mail" icon="i-heroicons-user-16-solid" class="w-full"/>
                     </UFormField>
 
                     <UFormField name="password">

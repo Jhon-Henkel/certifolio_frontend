@@ -10,7 +10,6 @@ import type {IApiResponseInterface} from "~/plugins/router/api.get.response.inte
 export function createApi(notify: NotificationInterface) {
     const config = useRuntimeConfig()
     const baseApiUrl = config.public.API_URL
-    const baseCiApiUrl = config.public.CI_URL
     const route = useRoute();
     const store = useAuthStore();
 
@@ -153,13 +152,12 @@ export function createApi(notify: NotificationInterface) {
     return {
         authentication: {
             login: async function (data: LoginFormInterface) {
-                const url = `${baseCiApiUrl}api/v1/auth/login`
+                const url = `${baseApiUrl}auth/login`
                 const headers = {
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
-                    },
-                    withCredentials: true
+                    }
                 }
                 const response: AxiosResponse = await axios.post(url, data, headers)
                 return response.data

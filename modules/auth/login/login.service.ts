@@ -30,7 +30,7 @@ export default class  LoginService {
 
     public makeFormData(): LoginFormInterface {
         return {
-            user: '',
+            email: '',
             password: '',
         }
     }
