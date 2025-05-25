@@ -18,6 +18,11 @@ export const PagesMap = {
             icon: IconEnum.home,
             route: 'home',
         },
+        develop: {
+            label: 'Develop',
+            icon: IconEnum.terminal,
+            route: 'develop',
+        },
         auth: {
             login: {
                 label: 'Login',

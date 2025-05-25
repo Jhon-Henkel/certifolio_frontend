@@ -23,6 +23,8 @@ export const StatusActiveInactiveEnum = {
                 return 'Ativo'
             case StatusActiveInactiveEnum.inactive:
                 return 'Inativo'
+            default:
+                return ''
         }
     }
 }

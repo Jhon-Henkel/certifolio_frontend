@@ -1,6 +1,6 @@
 import {useTheme} from "~/composables/theme/use.theme";
 
-export const alert = {
+export const appAlert = {
     success: async (title: string, text: string): Promise<void> => {
         const { $swal } = useNuxtApp()
         const { currentTheme } = useTheme()
